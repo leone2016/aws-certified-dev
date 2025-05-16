@@ -7,8 +7,8 @@
 
 ## Create and Attach an EBS Volume
 1. Create a 10GB gp2 volume in us-east-1a with a name tag of 'data-volume'
-2. List non-loopback block devices on instance
-sudo lsblk -e7
+2. CONNECT EC2 - 1A: List non-loopback block devices on instance
+`sudo lsblk -e7`
 3. Attach the volume to the instance in us-east-1a
 4. Rerun the command to view block devices
 
