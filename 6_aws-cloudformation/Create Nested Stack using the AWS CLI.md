@@ -68,6 +68,8 @@ Outputs:
 
 4. Upload the vpc.yaml, subnet1.yaml, and subnet2.yaml files to an S3 bucket and retrieve the URLs
 
+aws s3 mb s3://my-cloudformation-s3-bucket-3121s2 ## Create a new S3 bucket
+
 aws s3 cp <file-name> s3://<bucketname>
 
 aws s3api list-objects --bucket my-cloudformation-s3-bucket-3121s2 --query "Contents[].{Key: Key}" --output text | awk '{ print "https://my-cloudformation-s3-bucket-3121s2.s3.amazonaws.com/" $1 }'
