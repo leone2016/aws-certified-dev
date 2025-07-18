@@ -13,7 +13,7 @@ Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0440d3b780d96b29d
+      ImageId: ami-0150ccaf51ab55a51 # <curr-iam>lunch a new ec2 instance a get this id
       InstanceType: t2.micro
       SecurityGroups:
         - !Ref InstanceSecurityGroup

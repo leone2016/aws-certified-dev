@@ -1,3 +1,4 @@
+#class63: create a change set to attach an EBS volume to an EC2 instance
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Attach an EBS volume to the EC2 instance, retaining original resources
 Resources:
@@ -13,7 +14,7 @@ Resources:
   MyInstance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-0440d3b780d96b29d
+      ImageId: ami-0150ccaf51ab55a51 # ensure this AMI ID is valid for your region
       InstanceType: t2.micro
       SecurityGroups:
         - !Ref InstanceSecurityGroup
