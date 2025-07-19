@@ -68,11 +68,14 @@ Outputs:
 
 4. Upload the vpc.yaml, subnet1.yaml, and subnet2.yaml files to an S3 bucket and retrieve the URLs
 
-aws s3 mb s3://my-cloudformation-s3-bucket-3121s2 ## Create a new S3 bucket
+aws s3 mb s3://<bucketname> ## Create a new S3 bucket
 
 aws s3 cp <file-name> s3://<bucketname>
 
-aws s3api list-objects --bucket my-cloudformation-s3-bucket-3121s2 --query "Contents[].{Key: Key}" --output text | awk '{ print "https://my-cloudformation-s3-bucket-3121s2.s3.amazonaws.com/" $1 }'
+aws s3 ls # List the contents of the S3 bucket
+aws s3 ls  <bucketname> // List the contents of the S3 bucket
+
+aws s3api list-objects --bucket <bucketname> --query "Contents[].{Key: Key}" --output text | awk '{ print "https://<bucketname>.s3.amazonaws.com/" $1 }'
 
 5. Create a file named main.yaml with the following content (replace your-bucket-name with the name of the S3 bucket where you uploaded the templates)
 
@@ -82,19 +85,19 @@ Resources:
   VPCStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://my-cloudformation-s3-bucket-3121s2.s3.amazonaws.com/vpc.yaml
+      TemplateURL: https://<bucketname>.s3.amazonaws.com/vpc.yaml
 
   Subnet1Stack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://my-cloudformation-s3-bucket-3121s2.s3.amazonaws.com/subnet1.yaml
+      TemplateURL: https://<bucketname>.s3.amazonaws.com/subnet1.yaml
       Parameters:
         VpcId: !GetAtt VPCStack.Outputs.VpcId
 
   Subnet2Stack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://my-cloudformation-s3-bucket-3121s2.s3.amazonaws.com/subnet2.yaml
+      TemplateURL: https://<bucketname>.s3.amazonaws.com/subnet2.yaml
       Parameters:
         VpcId: !GetAtt VPCStack.Outputs.VpcId
 ```
