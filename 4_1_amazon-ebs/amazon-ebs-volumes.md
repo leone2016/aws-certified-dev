@@ -2,10 +2,13 @@
 
 ## Launch Instances in two AZs
 
-1. Launch an instance using the Amazon Linux AMI in us-east-1a
+1. Launch an instance using the Amazon Linux AMI in us-east-1a 
+   1. [class 26](https://www.udemy.com/course/aws-certified-developer-associate-exam-training/learn/lecture/43290706#overview)
+
 2. Launch another instnace using the Amazon Linux AMI in us-east-1b
 
 ## Create and Attach an EBS Volume
+
 1. Create a 10GB gp2 volume in us-east-1a with a name tag of 'data-volume'
 2. CONNECT EC2 - 1A: List non-loopback block devices on instance
 `sudo lsblk -e7`
@@ -14,13 +17,15 @@
 
 ## Create a filesystem and mount the volume
 1. Create a filesystem on the EBS volume
-sudo mkfs -t ext4 /dev/xvdf
+  `sudo mkfs -t ext4 /dev/xvdf`
 2. Create a mount point for the EBS volume
-sudo mkdir /data
+  `sudo mkdir /data`
 3. Mount the EBS volume to the mount point
-sudo mount /dev/xvdf /data
+  `sudo mount /dev/xvdf /data`
 4. Make the volume mount persistent
-Run: 'sudo nano /etc/fstab' then add '/dev/xvdf /data ext4 defaults,nofail 0 2' and save the file
+  1. Run: `sudo nano /etc/fstab`  
+  2. then add `/dev/xvdf /data ext4 defaults,nofail 0 2` and save the file
+
 
 ## Add some data to the volume
 
