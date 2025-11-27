@@ -1,5 +1,7 @@
 # Created Nested Stack using the AWS CLI
 
+[CLOUDShell]
+
 1. Create a file named vpc.yaml with the following content
 
 ```yaml
@@ -68,14 +70,22 @@ Outputs:
 
 4. Upload the vpc.yaml, subnet1.yaml, and subnet2.yaml files to an S3 bucket and retrieve the URLs
 
-aws s3 mb s3://my-cloudformation-s3-bucket-12367 ## Create a new S3 bucket
+### Create a new S3 bucket
 
-aws s3 cp <file-name> s3://my-cloudformation-s3-bucket-12367
+`aws s3 mb s3://my-cloudformation-s3-bucket-12367` 
 
-aws s3 ls # List the contents of the S3 bucket
+`aws s3 cp vpc.yaml s3://my-cloudformation-s3-bucket-12367`
+
+`aws s3 cp subnet1.yaml s3://my-cloudformation-s3-bucket-12367`
+
+`aws s3 cp subnet2.yaml s3://my-cloudformation-s3-bucket-12367`
+
+List the contents of the S3 bucket
+
+aws s3 ls 
 aws s3 ls  my-cloudformation-s3-bucket-12367 // List the contents of the S3 bucket
 
-aws s3api list-objects --bucket my-cloudformation-s3-bucket-12367 --query "Contents[].{Key: Key}" --output text | awk '{ print "https://my-cloudformation-s3-bucket-12367.s3.amazonaws.com/" $1 }'
+
 
 5. Create a file named main.yaml with the following content (replace your-bucket-name with the name of the S3 bucket where you uploaded the templates)
 
@@ -104,8 +114,8 @@ Resources:
 
 7. Deploy the main stack using the AWS CloudFormation CLI
 
-aws cloudformation create-stack --stack-name NestedStackExample --template-body file://main.yaml --capabilities CAPABILITY_NAMED_IAM
+`aws cloudformation create-stack --stack-name NestedStackExample --template-body file://main.yml --capabilities CAPABILITY_NAMED_IAM`
 
 8. The stack can be deleted with the following command
 
-aws cloudformation delete-stack --stack-name NestedStackExample
+`aws cloudformation delete-stack --stack-name NestedStackExample`

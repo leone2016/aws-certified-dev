@@ -144,3 +144,6 @@ sudo ./script.sh
 
 ![image-20250803060221446](image-20250803060221446.png)
 
+Expected result
+
+![image-20250803061210656](image-20250803061210656.png)

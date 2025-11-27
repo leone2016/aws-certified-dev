@@ -1,2 +1,14 @@
 #!/bin/bash
 echo ECS_CLUSTER=your_cluster_name >> /etc/ecs/ecs.config
+
+
+
+![image-20250803104346433](image-20250803104346433.png)
+
+![image-20250803104508477](image-20250803104508477.png)
+
+![image-20250803104605849](image-20250803104605849.png)
+
+![image-20250803114456745](image-20250803114456745.png)
+
+![image-20250803114554659](image-20250803114554659.png)
